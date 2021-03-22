@@ -1,9 +1,4 @@
 package leetcode.problems;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * @Author Mr.Yan
  * @Date 2021/3/22 16:25
