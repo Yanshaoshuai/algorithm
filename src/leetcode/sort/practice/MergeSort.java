@@ -18,8 +18,11 @@ public class MergeSort {
             return;
         }
         int mid=(l+r)/2;
+        //左边有序
         sort(nums,l,mid);
+        //右边有序
         sort(nums,mid+1,r);
+        //合并左右
         merge(nums,l,mid,r);
     }
 

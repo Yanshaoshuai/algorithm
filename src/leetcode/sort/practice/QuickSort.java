@@ -7,51 +7,50 @@ import java.util.Arrays;
  * @Date 2020 / 10 /15 14:10
  **/
 public class QuickSort {
-    public void quickSort(int[] nums){
-        sort(nums,0,nums.length-1);
+    public int[] sort(int[] arr){
+        if(arr==null||arr.length==0){
+            return arr;
+        }
+        int l=0;
+        int r= arr.length-1;
+        partition(arr,l,r);
+        return arr;
     }
 
-    private void sort(int[] nums, int l, int r) {
-        if(l>r){
+    private void partition(int[] arr, int l, int r) {
+        if(r-l<1){
             return;
         }
-        int j=partition(nums,l,r);//[l,j] j [j,r]
-        sort(nums,l,j-1);
-        sort(nums,j+1,r);
-    }
-
-    private int partition(int[] nums, int l, int r) {
-        int indexValue=nums[l];
-        int i=l,j=r+1;
+        int i=l,j=r;
+        //找到基准
+        int index=l;
+        //小于基准放左边 大于基准放右边
         while (true){
-            while (nums[++i]<indexValue){
-                if(i==r){
-                    break;
-                }
+            while (arr[l]<=arr[index]&&l<j){
+                l++;
             }
-            while (nums[--j]>indexValue){
-                if(j==l){
-                    break;
-                }
+            while (arr[r]>=arr[index]&&r>i){
+                r--;
             }
-            if(i>=j){
+            if(l>=r){
+                int tmp =arr[index];
+                arr[index]=arr[r];
+                arr[r]=tmp;
                 break;
+            }else {
+                int tmp=arr[l];
+                arr[l]=arr[r];
+                arr[r]=tmp;
             }
-            swap(nums,i,j);
         }
-        swap(nums,l,j);
-        return j;
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp=nums[i];
-        nums[i]=nums[j];
-        nums[j]=temp;
+        //递归左右
+        partition(arr,i,r-1);
+        partition(arr,r+1,j);
     }
 
     public static void main(String[] args) {
         int[] nums=new int[]{6,5,4,2,3,1};
-        new QuickSort().quickSort(nums);
+        new QuickSort().sort(nums);
         System.out.println(Arrays.toString(nums));
     }
 }
