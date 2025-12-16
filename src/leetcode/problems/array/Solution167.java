@@ -14,23 +14,19 @@ public class Solution167 {
      * 对撞指针
      * time O(n)
      * space O(1)
-     * @param numbers
-     * @param target
-     * @return
      */
-   public int[] twoSum(int[] numbers, int target) {
-       for (int i = 0,j=numbers.length-1; i <j;) {
-           if(numbers[i]+numbers[j]==target){
-               return new int[]{i+1,j+1};
-           }else if(numbers[i]+numbers[j]<target){
-               i++;
-           }else {
-               j--;
-           }
-       }
-       return null;
-   }
-    public static void main(String[] args) {
-
+    public int[] twoSum(int[] numbers, int target) {
+        int i=0,j=numbers.length-1;
+        while (i<j){
+            if(numbers[i]+numbers[j]<target){
+                i++;
+                continue;
+            }else if (numbers[i]+numbers[j]>target){
+                j--;
+                continue;
+            }
+            return new int[]{i+1,j+1};
+        }
+        return null;
     }
 }

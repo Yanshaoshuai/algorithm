@@ -10,33 +10,15 @@ import java.util.Map;
 public class Solution1 {
     /**
      * 查找表
-     * @param nums
-     * @param target
-     * @return
      */
     public int[] twoSum(int[] nums, int target) {
-       Map<Integer,Integer> record=new HashMap();
-        for (int i = 0; i < nums.length; i++) {
-            record.put(nums[i],i);
-        }
-        //time O(n)
-        for (int i = 0; i < nums.length; i++) {
-            int searchNum=target-nums[i];
-            if(record.containsKey(searchNum)&&record.get(searchNum)!=null&&record.get(searchNum)!=i){
-                return new int[]{i,record.get(searchNum)};
+        Map<Integer,Integer> numIndexMap=new HashMap<>();
+        for (int i=0;i<nums.length;i++) {
+            if(numIndexMap.get(target-nums[i])==null){
+                numIndexMap.put(nums[i],i);
+                continue;
             }
-        }
-        return null;
-    }
-    public int[] twoSum2(int[] nums, int target) {
-       Map<Integer,Integer> record=new HashMap();
-        //time O(n)
-        for (int i = 0; i < nums.length; i++) {
-            int searchNum=target-nums[i];
-            if(record.containsKey(searchNum)&&record.get(searchNum)!=null&&record.get(searchNum)!=i){
-                return new int[]{i,record.get(searchNum)};
-            }
-            record.put(nums[i],i);
+            return new int[]{i,numIndexMap.get(target-nums[i])};
         }
         return null;
     }

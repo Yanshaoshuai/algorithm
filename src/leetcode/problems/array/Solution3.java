@@ -1,16 +1,35 @@
 package leetcode.problems.array;
 
+import java.util.LinkedHashSet;
+
 /**
  * @Author Mr.Yan
  * @Date 2020 / 09 /02 17:38
  **/
 public class Solution3 {
+    public int lengthOfLongestSubstring(String s) {
+        if(s==null||s.isEmpty()){
+            return 0;
+        }
+        LinkedHashSet<Character> existCharSet=new LinkedHashSet<>();
+        int l=0,r=0;
+        int max=1;
+        while (r<s.length()){
+            if(!existCharSet.contains(s.charAt(r))){
+                existCharSet.add(s.charAt(r));
+                max=Integer.max(max,r-l+1);
+                r++;
+            }else {
+                existCharSet.remove(existCharSet.getFirst());
+                l++;
+            }
+        }
+        return max;
+    }
     /**
      *  滑动窗口
-     * @param s
-     * @return
      */
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstringSlide(String s) {
         int [] freq=new int[256];
         if(s.equals("")){
             return 0;
