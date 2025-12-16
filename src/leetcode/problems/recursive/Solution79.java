@@ -8,18 +8,12 @@ public class Solution79 {
     /**
      * 方向数组
      */
-    private int[][] direction=new int[][]{{-1,0},{0,1},{1,0},{0,-1}};
+    private final int[][] direction=new int[][]{{-1,0},{0,1},{1,0},{0,-1}};
     private int row;
     private int column;
     private boolean[][] visited;
     /**
      * 从board[startX,startY]开始寻找word[index...word.size()]
-     * @param board
-     * @param word
-     * @param index
-     * @param startX
-     * @param startY
-     * @return
      */
     private boolean searchWord(char[][] board,String word,int index ,int startX,int startY){
         if(index==word.length()-1){//最后一个字符 返回是否相等
@@ -47,12 +41,9 @@ public class Solution79 {
 
     /**
      * 函数入口
-     * @param board
-     * @param word
-     * @return
      */
     public boolean exist(char[][] board, String word) {
-        if(board==null&&board.length==0||word==null){
+        if(board==null||board.length==0||word==null){
             return false;
         }
         row=board.length;//行 X

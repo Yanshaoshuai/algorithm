@@ -11,21 +11,13 @@ public class Solution455 {
     /**
      * 贪心算法
      * time O(nlogn)
-     * @param g
-     * @param s
-     * @return
      */
     public int findContentChildren1(int[] g, int[] s) {
-        Comparator grater = new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        };
+        Comparator<Integer> grater = (o1, o2) -> o2 - o1;
         Integer[] g1 = Arrays.stream(g).boxed().toArray(Integer[]::new);
         Integer[] s1 = Arrays.stream(s).boxed().toArray(Integer[]::new);
-        Arrays.<Integer>sort(g1,grater);
-        Arrays.<Integer>sort(s1,grater);
+        Arrays.sort(g1,grater);
+        Arrays.sort(s1,grater);
         int sp=0;
         int gp=0;
         int result=0;

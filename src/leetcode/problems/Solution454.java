@@ -35,7 +35,7 @@ public class Solution454 {
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < B.length; j++) {
                 int  sum=A[i]+B[j];
-                int searchNum=0-sum;
+                int searchNum= -sum;
                 if(cdSumMap.containsKey(searchNum)){
                     int cdSumCount = cdSumMap.get(searchNum);
                     count+=cdSumCount;

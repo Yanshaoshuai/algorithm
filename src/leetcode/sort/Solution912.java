@@ -24,9 +24,7 @@ public class Solution912 {
     private void merge(int[] nums, int l, int mid, int r) {
         int i=l;
         int j=mid+1;
-        for (int k = l; k <=r; k++) {
-            aux[k]=nums[k];
-        }
+        if (r + 1 - l >= 0) System.arraycopy(nums, l, aux, l, r + 1 - l);
         for (int k = l; k <=r; k++) {
             if(i>mid){
                 nums[k]=aux[j++];

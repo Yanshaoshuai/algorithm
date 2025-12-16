@@ -8,7 +8,7 @@ import java.util.List;
  * @Date 2020 / 09 /13 17:24
  **/
 public class Solution17 {
-    private static String[] letterMap=new String[]{
+    private static final String[] letterMap=new String[]{
             "",//0
             "",//1
             "abc",//2
@@ -20,9 +20,9 @@ public class Solution17 {
             "tuv",//8
             "wxyz"//9
     } ;
-    private List<String> result=new LinkedList<>();
+    private final List<String> result=new LinkedList<>();
     public List<String> letterCombinations(String digits) {
-        if(digits==null||digits.length()==0){
+        if(digits==null|| digits.isEmpty()){
             return result;
         }
         findCombination(digits,0,"");
@@ -32,10 +32,6 @@ public class Solution17 {
     /**
      * s 保存了 digits[0...index-1]翻译得到的一个字母字符串
      *  寻找和digits[index]匹配的字母,获得digits[0...index]翻译得到的解
-     * @param digits
-     * @param index
-     * @param s
-     * @return
      */
     private void findCombination(String digits,int index,String s){
         System.out.println(index+":"+s);

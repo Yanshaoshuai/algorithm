@@ -24,16 +24,11 @@ public class MergeSort {
 
     /**
      * 和并有序数组[l,mid],[mid+1,r]=>[l,r]
-     * @param nums
-     * @param l
-     * @param mid
-     * @param r
      */
     private static void merge(int[] nums, int l, int mid, int r) {
         int  i=l,j=mid+1;
-        for (int k = l; k <=r; k++) {//复制[l,r]
-            aux[k]=nums[k];
-        }
+        //复制[l,r]
+        if (r + 1 - l >= 0) System.arraycopy(nums, l, aux, l, r + 1 - l);
         for (int k = l; k <=r ; k++) {
             if(i>mid){//左边已经用完,剩下都用右边
                 nums[k]=aux[j++];

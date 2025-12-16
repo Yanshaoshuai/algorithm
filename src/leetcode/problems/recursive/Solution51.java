@@ -1,5 +1,6 @@
 package leetcode.problems.recursive;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,21 +9,18 @@ import java.util.List;
  * @Date 2020 / 09 /14 14:38
  **/
 public class Solution51 {
-    private List<List<String>> result=new LinkedList<>();
+    private final List<List<String>> result=new LinkedList<>();
     private boolean[] col,dia1,dia2;//列 正对角线 反对角线
     public List<List<String>> solveNQueens(int n) {
         col=new boolean[n];
         dia1=new boolean[2*n-1];//有2n减1条对角线
         dia2=new boolean[2*n-1];
-        putQueen(n,0,new LinkedList<Integer>());
+        putQueen(n,0,new LinkedList<>());
         return result;
     }
 
     /**
      * 尝试在一个n皇后问题中,摆放第row行的皇后问题
-     * @param n
-     * @param row
-     * @param solve
      */
     private void putQueen(int n,int row, LinkedList<Integer> solve){
         if(row==n){//找到一个解
@@ -42,7 +40,6 @@ public class Solution51 {
                 solve.removeLast();
             }
         }
-        return;
     }
 
     private List<String> generateBoard(int n, LinkedList<Integer> solve) {
@@ -51,16 +48,14 @@ public class Solution51 {
         }
         List<String> resultSolve=new LinkedList<>();
        char[][] board=new char[n][n];
-        for (int i = 0; i < board.length; i++) {//构造棋盘
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j]='.';
-            }
+        for (char[] chars : board) {//构造棋盘
+            Arrays.fill(chars, '.');
         }
         for (int i = 0; i < n; i++) {//把第i行的对应列放置一个皇后 Q
             board[i][solve.get(i)]='Q';
         }
-        for (int i = 0; i <board.length; i++) {//保存一个解棋盘
-            resultSolve.add(new String(board[i]));
+        for (char[] chars : board) {//保存一个解棋盘
+            resultSolve.add(new String(chars));
         }
         return resultSolve;
     }

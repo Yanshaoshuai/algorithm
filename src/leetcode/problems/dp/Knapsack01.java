@@ -1,5 +1,7 @@
 package leetcode.problems.dp;
 
+import java.util.Arrays;
+
 /**
  * @Author Mr.Yan
  * @Date 2020 / 09 /16 11:42
@@ -12,26 +14,18 @@ public class Knapsack01 {
      * @param w 物品所占容积
      * @param v 物品价值
      * @param c 总容积
-     * @return
      */
-    public int knapsack01(int[] w,int v[],int c){
+    public int knapsack01(int[] w, int[] v, int c){
         int n=w.length;
         memory=new int[n][c+1];
-        for (int i = 0; i < memory.length; i++) {
-            for (int j = 0; j < memory[i].length; j++) {
-                memory[i][j]=-1;
-            }
+        for (int[] ints : memory) {
+            Arrays.fill(ints, -1);
         }
         return bestValue(w,v,n-1,c);
     }
 
     /**
      * 用 [0...index]的物品,填充容积为c的背包的最大值
-     * @param w
-     * @param v
-     * @param index
-     * @param c
-     * @return
      */
     private int bestValue(int[] w, int[] v, int index, int c) {
         if(index<0||c<=0){//index小于0或者背包容积<=0返回0

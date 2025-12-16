@@ -8,7 +8,7 @@ import java.util.List;
  * @Date 2020 / 09 /13 19:58
  **/
 public class Solution46 {
-    private List<List<Integer>> result=new LinkedList<>();
+    private final List<List<Integer>> result=new LinkedList<>();
     private boolean[] used;
     public List<List<Integer>> permute(int[] nums) {
         if(nums==null||nums.length==0){
@@ -21,7 +21,6 @@ public class Solution46 {
 
     /**
      *
-     * @param nums
      * @param index 向p加入第index+1个元素,获得一个有index+1个元素的排列
      * @param p 保存了一个有index个元素的排列
      */

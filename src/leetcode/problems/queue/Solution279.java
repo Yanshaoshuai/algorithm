@@ -11,7 +11,7 @@ public class Solution279 {
     public int numSquares(int n) {
         LinkedList<Pair> queue=new LinkedList<>();
         Map<Integer,Boolean> flagMap=new HashMap<>();
-        queue.offer(new Pair(n,0));
+        queue.offer(new Pair(n, 0));
         flagMap.put(n,true);
         while (!queue.isEmpty()){
             Pair front = queue.poll();
@@ -31,16 +31,16 @@ public class Solution279 {
                 //每个num都要和相距i^2的点相连
                 if(flagMap.get(next)==null||!flagMap.get(next)){
                     //去除冗余节点
-                    queue.offer(new Pair(next,step+1));
+                    queue.offer(new Pair(next, step + 1));
                     flagMap.put(next,true);
                 }
             }
         }
         return 0;
     }
-    class Pair{
-        private Integer num;
-        private Integer step;
+    static class Pair{
+        private final Integer num;
+        private final Integer step;
 
         public Pair(Integer num, Integer step) {
             this.num = num;

@@ -8,9 +8,9 @@ import java.util.List;
  * @Date 2020 / 09 /13 20:50
  **/
 public class Solution77 {
-    private List<List<Integer>> result=new LinkedList<>();
+    private final List<List<Integer>> result=new LinkedList<>();
     public List<List<Integer>> combine(int n, int k) {
-        if(n<=0||k<=0||k>n){
+        if(k <= 0 || k > n){
             return result;
         }
         //从1开始
@@ -20,9 +20,6 @@ public class Solution77 {
 
     /**
      * C(n,k)
-     * @param n
-     * @param k
-     * @param start
      * @param c 当前已经找到的组合存储在C中,需要从start开始搜索新的元素
      */
     private void generateCombinations(int n,int k,int start,LinkedList<Integer> c){
@@ -36,11 +33,9 @@ public class Solution77 {
             c.removeLast();
         }*/
 
-        /**
-         * 剪枝
-         * 还有k-c.size()个空位 所以 [i...n] 中至少有k-c.size()个元素
-         * i最多为 n-(k-c.size())+1
-         */
+        //剪枝
+        //还有k-c.size()个空位 所以 [i...n] 中至少有k-c.size()个元素
+        //i最多为 n-(k-c.size())+1
         for (int i = start; i <=n-(k-c.size())+1; i++) {
             c.add(i);//i以前的数字已经尝试过了 组合不区分顺序
             generateCombinations(n,k,i+1,c);

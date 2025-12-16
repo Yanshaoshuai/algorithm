@@ -1,6 +1,5 @@
 package leetcode.problems.queue;
 
-import leetcode.problems.stack.Solution94;
 import leetcode.problems.utils.TreeNode;
 import leetcode.problems.utils.TreeNodeUtil;
 
@@ -18,7 +17,7 @@ public class Solution102 {
             return result;
         }
         LinkedList<Pair> queue=new LinkedList<>();
-        queue.offer(new Pair(root,0));
+        queue.offer(new Pair(root, 0));
         while (!queue.isEmpty()){
             Pair front = queue.peek();
             TreeNode node=front.node;
@@ -29,17 +28,17 @@ public class Solution102 {
             }
             result.get(level).add(node.val);
             if(node.left!=null){
-                queue.offer(new Pair(node.left,level+1));
+                queue.offer(new Pair(node.left, level + 1));
            }
             if(node.right!=null){
-                queue.offer(new Pair(node.right,level+1));
+                queue.offer(new Pair(node.right, level + 1));
             }
         }
         return result;
     }
-    class Pair{
-        private TreeNode node;
-        private Integer level;
+    static class Pair{
+        private final TreeNode node;
+        private final Integer level;
 
         public Pair(TreeNode node, Integer level) {
             this.node = node;

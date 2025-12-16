@@ -8,20 +8,16 @@ import java.util.Queue;
  * @Date 2020 / 09 /11 21:24
  **/
 public class TreeNodeUtil {
-        /**
-         * Definition for a binary tree node.
-         * public class TreeNode {
-         *     int val;
-         *     TreeNode left;
-         *     TreeNode right;
-         *     TreeNode(int x) { val = x; }
-         * }
-         */
+//        Definition for a binary tree node.
+//        public class TreeNode {
+//            int val;
+//            TreeNode left;
+//            TreeNode right;
+//            TreeNode(int x) { val = x; }
+//        }
+
     /**
      * 判断是否存在值为val的节点
-     * @param root
-     * @param val
-     * @return
      */
         public static boolean contain(TreeNode root,Integer val){
             if(root==null){
@@ -30,28 +26,25 @@ public class TreeNodeUtil {
             if(val==root.val){
                 return true;
             }
-            if(contain(root.left,val)||contain(root.right,val)){
-                return true;
-            }
-            return false;
+            return contain(root.left, val) || contain(root.right, val);
         }
         public static String treeNodeToString(TreeNode root) {
             if (root == null) {
                 return "[]";
             }
 
-            String output = "";
+            StringBuilder output = new StringBuilder();
             Queue<TreeNode> nodeQueue = new LinkedList<>();
             nodeQueue.add(root);
             while(!nodeQueue.isEmpty()) {
                 TreeNode node = nodeQueue.remove();
 
                 if (node == null) {
-                    output += "null, ";
+                    output.append("null, ");
                     continue;
                 }
 
-                output += String.valueOf(node.val) + ", ";
+                output.append(node.val).append(", ");
                 nodeQueue.add(node.left);
                 nodeQueue.add(node.right);
             }
@@ -61,7 +54,7 @@ public class TreeNodeUtil {
         public static TreeNode stringToTreeNode(String input) {
             input = input.trim();
             input = input.substring(1, input.length() - 1);
-            if (input.length() == 0) {
+            if (input.isEmpty()) {
                 return null;
             }
 

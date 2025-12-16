@@ -25,7 +25,7 @@ import java.util.LinkedList;
  * @Date 2020 / 09 /12 14:49
  **/
 public class TestLinkedList {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         //栈测试
         LinkedList<Integer> stack=new LinkedList<>();
         stack.push(1);

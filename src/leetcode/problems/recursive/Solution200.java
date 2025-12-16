@@ -8,15 +8,12 @@ public class Solution200 {
     /**
      * 方向数组
      */
-    private int[][] direction=new int[][]{{-1,0},{0,1},{1,0},{0,-1}};
+    private final int[][] direction=new int[][]{{-1,0},{0,1},{1,0},{0,-1}};
     private int row;
     private int column;
     private boolean[][] visited;
     /**
      * 检查是否越界
-     * @param x
-     * @param y
-     * @return
      */
     private boolean inArea(int x, int y) {
         return x>=0&&x<row&&y>=0&&y<column;
@@ -48,9 +45,6 @@ public class Solution200 {
 
     /**
      * 标记相邻陆地
-     * @param grid
-     * @param i
-     * @param j
      */
     private void floodFill(char[][] grid, int i, int j) {
         visited[i][j]=true;

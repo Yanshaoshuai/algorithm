@@ -1,8 +1,4 @@
 package leetcode;
-
-import com.sun.xml.internal.bind.v2.model.annotation.Quick;
-import leetcode.sort.practice.MergeSort;
-
 import java.util.Arrays;
 
 /**
@@ -12,8 +8,8 @@ import java.util.Arrays;
 public class Main {
    static class AddStr{
        public String addStr(String num1,String num2){
-           int l=0,r=0;
-           StringBuffer sb=new StringBuffer();
+           int l=0,r;
+           StringBuilder sb=new StringBuilder();
            for (int i = num1.length()-1,j=num2.length()-1; i >=0||j>=0||l>0;i--,j--) {
                int x=i>=0?num1.charAt(i)-'0':0;
                int y=j>=0?num2.charAt(j)-'0':0;
@@ -53,9 +49,7 @@ public class Main {
 
        private void merge(int[] nums, int mid, int l, int r) {
           int i=l,j=mid+1;
-          for(int k=l;k<=r;k++){
-              aux[k]=nums[k];
-          }
+           if (r + 1 - l >= 0) System.arraycopy(nums, l, aux, l, r + 1 - l);
            for (int k = l; k <=r; k++) {
                if(i>mid){
                    nums[k]=aux[j++];
@@ -76,20 +70,19 @@ public class Main {
            return nums;
        }
 
-       private void quickSort(int[] nums, int l, int r) {
-           if(r-l<1){
+       private void quickSort(int[] nums, int index, int r) {
+           if(r- index <1){
                return;
            }
            //选定基准
            //小于基准移到左边
            //大于基准移到右边
-           int index=l;
-           int i=l,j=r;
+           int i= index,j=r;
            while (true){
                while (nums[i]<=nums[index]&&i<r){
                    i++;
                }
-               while (nums[j]>=nums[index]&&j>l){
+               while (nums[j]>=nums[index]&&j> index){
                    j--;
                }
                if(i<j){
@@ -103,7 +96,7 @@ public class Main {
                    break;
                }
            }
-           quickSort(nums,l,j-1);
+           quickSort(nums, index,j-1);
            quickSort(nums,j+1,r);
        }
    }
@@ -113,9 +106,9 @@ public class Main {
         System.out.println(s);
         System.out.println("==========归并排序===========");
         int[] sort = new MergeSort().sort(new int[]{9, 7, 8, 4, 5, 2, 1});
-        Arrays.stream(sort).forEach(t-> System.out.println(t));
+        Arrays.stream(sort).forEach(System.out::println);
         System.out.println("=========快速排序===========");
         int[] sort1 = new QuickSort().sort(new int[]{9, 7, 8, 4, 5, 2, 1});
-        Arrays.stream(sort1).forEach(t-> System.out.println(t));
+        Arrays.stream(sort1).forEach(System.out::println);
     }
 }

@@ -27,9 +27,7 @@ public class MergeSort {
     }
 
     private void merge(int[] nums, int l, int mid, int r) {
-        for (int k = l; k <=r; k++) {
-            aux[k]=nums[k];
-        }
+        if (r + 1 - l >= 0) System.arraycopy(nums, l, aux, l, r + 1 - l);
         int i=l,j=mid+1;
         for (int k = l; k <=r; k++) {
             {

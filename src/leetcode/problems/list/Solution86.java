@@ -10,9 +10,6 @@ public class Solution86 {
     /**
      * time O(n)
      * 双指针
-     * @param head
-     * @param x
-     * @return
      */
     public ListNode partition(ListNode head, int x) {
         ListNode smallHead=null;
@@ -47,11 +44,7 @@ public class Solution86 {
         }
         if(smallHead!=null){
             return smallHead;
-        }else if (largeHead!=null){
-            return largeHead;
-        }else {
-            return null;
-        }
+        }else return largeHead;
     }
 
     public static void main(String[] args) {
