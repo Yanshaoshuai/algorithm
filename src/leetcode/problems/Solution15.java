@@ -18,26 +18,28 @@ public class Solution15 {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
+            int j = i + 1;
             int k = nums.length - 1;
-            for (int j = i + 1; j < nums.length; j++) {
-                //  从第二次开始 跳过和上次遍历相同的数
-                if (j > i + 1 && nums[j] == nums[j - 1]) {
-                    continue;
-                }
-                //第三个数不需要刻意跳过 如果上次找到了 随着第二个数增大这次就不会满足条件
-                while (k > j && nums[k] + nums[j] > -nums[i]) {
+            while (j < k) {
+                if (nums[j] + nums[k] < -nums[i]) {
+                    j++;
+                } else if (nums[j] + nums[k] > -nums[i]) {
                     k--;
-                }
-                if (k == j) {
-                    break;
-                }
-                //防止出现小于的情况
-                if (nums[j] + nums[k] == -nums[j]) {
+                } else {
                     List<Integer> item = new LinkedList<>();
                     item.add(nums[i]);
                     item.add(nums[j]);
                     item.add(nums[k]);
                     result.add(item);
+                    j++;
+                    k--;
+                    //找到下一轮不重复的下标
+                    while (j < k && nums[j] == nums[j - 1]) {
+                        j++;
+                    }
+                    while (j < k && nums[k] == nums[k + 1]) {
+                        k--;
+                    }
                 }
             }
         }
