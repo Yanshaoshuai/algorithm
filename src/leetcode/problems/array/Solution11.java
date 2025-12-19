@@ -8,8 +8,6 @@ package leetcode.problems.array;
 public class Solution11 {
     /**
      * 碰撞指针求所有面积中最大的
-     * @param height
-     * @return
      */
     public int maxArea(int[] height) {
         int  area=0;
@@ -23,9 +21,5 @@ public class Solution11 {
             }
         }
         return area;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
