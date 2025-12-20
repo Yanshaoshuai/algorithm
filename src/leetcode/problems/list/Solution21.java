@@ -7,27 +7,21 @@ import leetcode.problems.utils.ListNode;
  * @Date 2020 / 09 /04 21:18
  **/
 public class Solution21 {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode newHead=new ListNode(0);
-        ListNode curNewNode=newHead;
-        while (l1!=null&&l2!=null){
-            if(l1.val<l2.val){
-               curNewNode.next=l1;
-               curNewNode=curNewNode.next;
-                l1=l1.next;
-            }else {
-                curNewNode.next=l2;
-                curNewNode=curNewNode.next;
-                l2=l2.next;
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                cur.next = list1;
+                list1 = list1.next;
+                cur = cur.next;
+            } else {
+                cur.next = list2;
+                list2 = list2.next;
+                cur = cur.next;
             }
-
         }
-        ListNode longNode=l1!=null?l1:l2;
-        while (longNode!=null){
-            curNewNode.next=longNode;
-            curNewNode=curNewNode.next;
-            longNode=longNode.next;
-        }
-        return newHead.next;
+        cur.next = list1 != null ? list1 : list2;
+        return dummy.next;
     }
 }
