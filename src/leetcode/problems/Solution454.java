@@ -13,11 +13,6 @@ public class Solution454 {
     /**
      * time O(n^2)
      * space O(n^2)
-     * @param A
-     * @param B
-     * @param C
-     * @param D
-     * @return
      */
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
         Map<Integer,Integer> cdSumMap=new HashMap<>();

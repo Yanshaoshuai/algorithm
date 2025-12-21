@@ -4,7 +4,7 @@ package leetcode.problems;
 import java.util.Arrays;
 
 /**
- * @Author Solution
+ * @Author Mr.Yan
  * @Date 2025/12/16
  */
 public class Solution16 {

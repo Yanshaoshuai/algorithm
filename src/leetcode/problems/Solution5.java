@@ -2,7 +2,7 @@ package leetcode.problems;
 
 
 /**
- * @Author Solution
+ * @Author Mr.Yan
  * @Date 2025/12/16
  */
 public class Solution5 {
